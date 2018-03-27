@@ -17,9 +17,9 @@ docker run \
   --rm \
   -u root \
   -p 8080:8080 \
-  -v jenkins-data:/var/jenkins_home \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$HOME":/home \
+  --mount type=volume,source=jenkins-data,destination=/var/jenkins_home \
+  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock \
+  --mount type=bind,source="$HOME",destination=/home \
   jenkinsci/blueocean
 ```
 
