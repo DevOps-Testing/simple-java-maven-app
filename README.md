@@ -20,6 +20,7 @@ docker run \
   --mount type=volume,source=jenkins-data,destination=/var/jenkins_home \
   --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock \
   --mount type=bind,source="$HOME",destination=/home \
+  --name jenkins-basic \
   jenkinsci/blueocean
 ```
 
