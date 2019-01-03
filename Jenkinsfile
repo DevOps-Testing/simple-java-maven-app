@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.6-alpine'
-            args '-v $HOME/.m2:/root/.m2:z -u root'
+            args '-v cicddockerstack_ci-mavenrepo:/root/.m2:z -u root'
             reuseNode true
         }
     }
