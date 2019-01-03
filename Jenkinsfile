@@ -1,8 +1,9 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3.6-alpine' 
-            args '-v /root/.m2:/root/.m2' 
+            image 'maven:3.6-alpine'
+            args '-v $HOME/.m2:/root/.m2:z -u root'
+            reuseNode true
         }
     }
     stages {
