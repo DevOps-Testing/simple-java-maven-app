@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.6-alpine'
-            args '-v cicddockerstack_ci-mavenrepo:/root/.m2:z -u root'
+            args '-v $HOME/.m2:/root/.m2:z -u root'
             reuseNode true
         }
     }
@@ -21,10 +21,15 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }
-        stage('Deliver') { 
-            steps {
-                sh './jenkins/scripts/deliver.sh' 
+        }        
+        stage('List effective Maven settings') {
+			steps {
+				sh 'mvn help:effective-settings'
+			}
+		}
+		stage('Upload to Nexus Repo') {
+            steps {                
+                sh 'mvn clean deploy ' //-Dmaven.test.skip=true
             }
         }
     }
