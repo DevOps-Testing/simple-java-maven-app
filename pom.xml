@@ -66,8 +66,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<!-- <distributionManagement> <snapshotRepository> <id>nexus-snapshots</id> 
-		<url>${nexus.snapshots.url}</url> </snapshotRepository> </distributionManagement> -->
+	<distributionManagement> <snapshotRepository> <id>nexus-snapshots</id> 
+		<url>${nexus.snapshots.url}</url> </snapshotRepository> </distributionManagement>
 
 
 	<properties>
